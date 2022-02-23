@@ -1,3 +1,4 @@
+// regex - https://www.codegrepper.com/code-examples/javascript/javascript+email+validation+regex
 function regex(email) {
   const re = /\S+@\S+\.\S+/;
   return re.test(email);
