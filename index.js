@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const { getAllTalkers } = require('./middlewares/getAllTalkers');
 const { getTalkerById } = require('./middlewares/getTalkerById');
 const { getTalkerError } = require('./middlewares/getTalkerError');
+const { postLogin } = require('./middlewares/postLogin');
+// const { postTalker } = require('./middlewares/postTalker');
+const { validate } = require('./middlewares/validate');
 
 const app = express();
 app.use(bodyParser.json());
@@ -20,6 +24,10 @@ app.get('/talker', getAllTalkers);
 app.get('/talker/:id', getTalkerById);
 
 app.use(getTalkerError);
+
+app.post('/login', validate, postLogin);
+
+// app.post('/talker', postTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
