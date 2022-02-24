@@ -5,8 +5,7 @@ const TALKERFILE = './talker.json';
 const getTalkerById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await fs.readFile(TALKERFILE, 'utf8');
-    const parseNames = JSON.parse(data);
+    const parseNames = JSON.parse(await fs.readFile(TALKERFILE, 'utf8'));
     const talkered = parseNames
       .find((user) => user.id === Number(id));
     
