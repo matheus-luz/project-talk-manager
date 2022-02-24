@@ -12,9 +12,8 @@ const postTalker = async (req, res, next) => {
     const newTalker = { id: countId, name, age, talk: { watchedAt, rate } };
 
     talkers.push(newTalker);
-    const stringTalkers = JSON.stringify(talkers);
 
-    await fs.writeFile(FILETALKER, stringTalkers);
+    await fs.writeFile(FILETALKER, JSON.stringify(talkers));
 
     return res.status(201).json(newTalker);
   } catch (err) {

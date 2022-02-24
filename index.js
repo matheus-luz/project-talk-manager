@@ -9,7 +9,7 @@ const { postTalker } = require('./middlewares/postTalker');
 const { validate } = require('./middlewares/validations/validate');
 const { auth } = require('./middlewares/validations/auth');
 const { validateTalker } = require('./middlewares/validations/validateTalker');
-// const { putTalkerById } = require('./middlewares/putTalker');
+const { putTalkerById } = require('./middlewares/putTalkerById');
 
 const app = express();
 app.use(bodyParser.json());
@@ -32,7 +32,7 @@ app.post('/login', validate, postLogin);
 
 app.post('/talker', auth, validateTalker, postTalker);
 
-// app.put('/talker/:id', auth, validateTalker, putTalkerById);
+app.put('/talker/:id', auth, validateTalker, putTalkerById);
 
 app.listen(PORT, () => {
   console.log('Online');
