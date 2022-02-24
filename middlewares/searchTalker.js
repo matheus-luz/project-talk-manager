@@ -9,14 +9,12 @@ const searchTalker = async (req, res, next) => {
   try {
     const { name = '' } = req.query;
     const talkers = JSON.parse(await fs.readFile(TALKERFILE, 'utf8'));
-
+    
     const filteredTalkerName = talkers.filter((talk) => { 
       const lowerCaseQuery = name.toLowerCase();
       const lowerCaseNameTalker = talk.name.toLowerCase();
       return lowerCaseNameTalker.includes(lowerCaseQuery);
     });
-
-    if (!filteredTalkerName) return res.status(200).json([]);
 
     return res.status(200).json(filteredTalkerName);
   } catch (err) {
