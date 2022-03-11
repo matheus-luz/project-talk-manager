@@ -1,1 +1,1 @@
-# Boas vindas ao repositório do Talker Manager!
+# Bem vindo ao repositório do Talker Manager!
